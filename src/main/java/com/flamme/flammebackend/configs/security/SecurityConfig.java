@@ -1,4 +1,4 @@
-package com.flamme.flammebackend.security;
+package com.flamme.flammebackend.configs.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
