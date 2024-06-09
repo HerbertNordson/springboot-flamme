@@ -1,4 +1,4 @@
-FROM ubuntu:16.10 AS build
+FROM ubuntu-upstart AS build
 
 RUN apt-get update
 RUN apt-get install openjdk-17-jdk -y
