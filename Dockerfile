@@ -1,15 +1,13 @@
-FROM maven:3.8-openjdk-17 AS build
+FROM maven:3.8.6-amazoncorretto-17 as build
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+WORKDIR /app
 COPY . .
 
-RUN apt-get install maven -y
-RUN mvn clean install
+RUN mvn clean package -X -DskipTests
 
-FROM openjdk:17-slim
+FROM openjdk:17-ea-10-jdk-slim
 
-EXPOSE 8080
+WORKDIR /app
 
 COPY --from=build /target/flamme-backend-0.0.1.jar app.jar
 
