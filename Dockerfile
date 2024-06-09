@@ -7,6 +7,8 @@ RUN mvn clean package -X -DskipTests
 
 FROM openjdk:17-ea-10-jdk-slim
 
+EXPOSE 8080
+
 WORKDIR /app
 
 COPY --from=build ./app/target/*.jar ./flamme-backend-0.0.1.jar
