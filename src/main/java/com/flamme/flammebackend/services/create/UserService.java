@@ -2,13 +2,12 @@ package com.flamme.flammebackend.services.create;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.events.Event.ID;
 
-import com.flamme.flammebackend.entities.Candles;
 import com.flamme.flammebackend.entities.User;
 import com.flamme.flammebackend.exceptions.UserException;
 import com.flamme.flammebackend.repository.UserRepository;
@@ -46,11 +45,6 @@ public class UserService {
     }
 
     public User update(User users) {
-        this.repository.findByEmail(users.getEmail())
-                .ifPresent((company) -> {
-                    throw new UserException();
-                });
-
         Optional<User> user = repository.findById(users.getId());
 
         User newUsers = user.get();
@@ -65,6 +59,7 @@ public class UserService {
 
     public String delete(Long id) {
         this.repository.deleteById(id);
+        
         return "Usuário deletado!";
     }
 }
