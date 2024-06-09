@@ -11,6 +11,6 @@ FROM openjdk:17-jdk-slim
 
 EXPOSE 5432
 
-COPY --from=build /target/flamme_db-1.0.0.jar app.jar
+COPY --from=build /target/flamme-backend-0.0.1 app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
